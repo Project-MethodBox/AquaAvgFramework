@@ -1,0 +1,84 @@
+﻿<UserControl
+    x:Class="AquaAvgFramework.Controls.CenterBubble"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AquaAvgFramework.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Height="170"
+    d:DesignHeight="170"
+    d:DesignWidth="650"
+    Loaded="CenterBubble_OnLoaded"
+    mc:Ignorable="d">
+    <Border d:Background="#FF333333" CornerRadius="30">
+        <Grid Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48*" />
+                <ColumnDefinition Width="17*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.1*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="0.62*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Margin="0,-2,0,0"
+                Orientation="Vertical">
+                <TextBlock
+                    Margin="20,0,20,5"
+                    HorizontalAlignment="Center"
+                    d:Text="Character Name"
+                    FontFamily="{Binding CapitalFontFamily}"
+                    FontSize="28"
+                    Foreground="White"
+                    Text="{Binding Capital}" />
+                <Border
+                    Height="2"
+                    Margin="20,0,20,0"
+                    Background="White"
+                    CornerRadius="10" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="20,5,18,5">
+                <TextBlock
+                    Name="StoryBlock"
+                    d:Text="*剧情内容"
+                    FontFamily="{Binding DetailFontFamily}"
+                    FontSize="20"
+                    Foreground="White"
+                    Text=""
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="60,-2,0,0"
+                HorizontalAlignment="Left"
+                FontSize="15"
+                Foreground="White"
+                Text="&gt;&gt;点击任意处以继续">
+                <TextBlock.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    AutoReverse="True"
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetProperty="(UIElement.Opacity)"
+                                    From="1"
+                                    To="0"
+                                    Duration="0:0:1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBlock.Triggers>
+            </TextBlock>
+        </Grid>
+    </Border>
+</UserControl>

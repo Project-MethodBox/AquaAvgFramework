@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AquaAvgFramework", "AquaAvgFramework.csproj", "{C4FE7BBF-5473-4E52-AC2C-956AA6720356}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AquaAvgFramework", "AquaAvgFramework.csproj", "{C4FE7BBF-5473-4E52-AC2C-956AA6720356}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyAvgEngine", "D:\Projects\EasyAvgEngine\EasyAvgEngine.csproj", "{F2080F8B-EC70-449E-9854-2F37D0AEAB9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C4FE7BBF-5473-4E52-AC2C-956AA6720356}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4FE7BBF-5473-4E52-AC2C-956AA6720356}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4FE7BBF-5473-4E52-AC2C-956AA6720356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2080F8B-EC70-449E-9854-2F37D0AEAB9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2080F8B-EC70-449E-9854-2F37D0AEAB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2080F8B-EC70-449E-9854-2F37D0AEAB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2080F8B-EC70-449E-9854-2F37D0AEAB9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

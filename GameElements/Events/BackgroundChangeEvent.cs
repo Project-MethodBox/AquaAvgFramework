@@ -1,16 +1,25 @@
-﻿using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+﻿using System.Windows.Controls;
+using AquaAvgFramework.Animation;
 using AquaAvgFramework.Controls;
+using System.Windows.Media.Imaging;
 
-namespace AquaAvgFramework.GameElements.Events
+namespace AquaAvgFramework.GameElements.Events;
+public class BackgroundChangeEvent(int elementId, Uri imagePath, IAnimation? switchAnimation = null) : IGameElement
 {
-    public class BackgroundChangeEvent(int elementId, Uri imagePath) : IGameElement
-    {
-        public int ElementId { get; set; } = elementId;
-        public Uri ImagePath { get; set; } = imagePath;
+    public int ElementId { get; set; } = elementId;
+    public Uri ImagePath { get; set; } = imagePath;
 
-        public void Enter(GamePanel gamePanel)
+    public IAnimation? SwitchAnimation { get; set; } = switchAnimation;
+
+    public void Enter(GamePanel gamePanel)
+    {
+        if (SwitchAnimation is not null)
+        {
+            var image = new Image();
+            image.Source = new BitmapImage(ImagePath);
+            SwitchAnimation?.ExecuteAnimation(gamePanel, image);
+        }
+        else
         {
             gamePanel.BackImage.Source = new BitmapImage(ImagePath);
         }

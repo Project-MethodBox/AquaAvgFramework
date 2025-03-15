@@ -7,8 +7,12 @@ using AquaAvgFramework.Spirits;
 
 namespace AquaAvgFramework.GameElements.Blocks
 {
+    /// <summary>
+    /// Option Dialog
+    /// </summary>
     [Attributes.ApplyAnimation(true)]
     [Attributes.BlockExecution]
+    [Serializable]
     public class PlainDialogue(
         EnterContext? enterContext,
         ExitContext? exitContext,

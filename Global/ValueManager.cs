@@ -11,7 +11,7 @@
             if (_values.ContainsKey("name"))
             {
                 throw new ArgumentException("A value with the same name already exists." +
-                                            " Please register this value with a different name");
+                                            "Please register this value with a different name");
             }
 
             _values.Add(name, value);

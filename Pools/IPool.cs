@@ -1,12 +1,20 @@
-﻿using AquaAvgFramework.Animation;
-using AquaAvgFramework.Controls;
+﻿using AquaAvgFramework.GameElements;
 
 namespace AquaAvgFramework.Pools;
 
-public interface IPool<TSource>: IAnimationExecutable 
+/// <summary>
+/// Provide streaming media playback services similar to pooling
+/// </summary>
+/// <typeparam name="TSource">Incoming source type</typeparam>
+public interface IPool<TSource> : IGameElement
 {
+    /// <summary>
+    /// Incoming type used to load streaming media
+    /// </summary>
     public TSource Source { get; set; }
     
-    public void Pause(GamePanel gamePanel);
-    public void Resume(GamePanel gamePanel);
+    /// <summary>
+    /// Duration, set to 0 to indicate until the end
+    /// </summary>
+    public int Duration { get; set; }
 }

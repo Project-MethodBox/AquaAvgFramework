@@ -4,6 +4,7 @@ using AquaAvgFramework.Controls;
 
 namespace AquaAvgFramework.Spirits
 {
+    [Serializable]
     public class Alert(string source) : ISpirit<string>
     {
         public int ElementId { get ; set; }

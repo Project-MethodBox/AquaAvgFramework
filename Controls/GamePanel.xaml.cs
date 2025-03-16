@@ -3,6 +3,7 @@ using AquaAvgFramework.GameElements;
 using AquaAvgFramework.StoryLineComponents;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace AquaAvgFramework.Controls
@@ -15,10 +16,11 @@ namespace AquaAvgFramework.Controls
         public List<StoryLine>? StoryLines;
         private List<IAnimationExecutable> _elementBuffer = new();
         internal StoryLine? CurrentStoryLine;
+        internal MediaPlayer MediaPlayer = new();
         private readonly Dispatcher _currentDispatcher;
         private int _timeStamp;
         private IGameElement? _nextElement;
-        private bool _isBlocking, _isApplyAnimation,_isSpirit;
+        private bool _isBlocking, _isApplyAnimation, _isSpirit;
 
         public GamePanel()
         {
@@ -61,7 +63,7 @@ namespace AquaAvgFramework.Controls
                         _elementBuffer[i].RemoveFromGrid(this);
                         _elementBuffer.RemoveAt(i);
                     }
-                    else if (CurrentStoryLine!.ElementId == _elementBuffer[i].ExitContext!.ExitStoryLineId && 
+                    else if (CurrentStoryLine!.ElementId == _elementBuffer[i].ExitContext!.ExitStoryLineId &&
                         _nextElement!.ElementId == _elementBuffer[i].ExitContext!.ExitElementId)
                     {
                         _elementBuffer[i].Exit(this);

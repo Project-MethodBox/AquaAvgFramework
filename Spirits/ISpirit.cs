@@ -1,10 +1,13 @@
 ﻿using AquaAvgFramework.Animation;
 
-namespace AquaAvgFramework.Spirits
+namespace AquaAvgFramework.Spirits;
+
+/// <summary>
+/// Representing all free objects
+/// </summary>
+/// <typeparam name="TSource">The type of source for building objects</typeparam>
+public interface ISpirit<TSource> : IAnimationExecutable
+    where TSource : class
 {
-    public interface ISpirit<TSource> : IAnimationExecutable 
-        where TSource : class
-    {
-        public TSource Source { get; set; }
-    }
+    public TSource Source { get; set; }
 }

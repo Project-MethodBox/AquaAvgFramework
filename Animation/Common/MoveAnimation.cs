@@ -7,26 +7,34 @@ namespace AquaAvgFramework.Animation.Common;
 /// <summary>
 /// Animation that enables element movement
 /// </summary>
-/// <param name="durationMillisecond"></param>
-/// <param name="endPosition"></param>
-/// <param name="startPosition"></param>
-public class MoveAnimation(int durationMillisecond, (int, int) endPosition, (int, int)? startPosition)
-    : AquaAvgFramework.Animation.IAnimation
+public class MoveAnimation : AquaAvgFramework.Animation.IAnimation
 {
     [JsonPropertyName("ms")]
-    public int DurationMillisecond { get; set; } = durationMillisecond;
+    public int DurationMillisecond { get; set; }
 
     /// <summary>
     /// Starting coordinates of movement
     /// </summary>
     [JsonPropertyName("start")]
-    public (int, int)? StartPosition { get; set; } = startPosition;
+    public (int, int)? StartPosition { get; set; }
 
     /// <summary>
     /// Ending coordinates of movement
     /// </summary>
     [JsonPropertyName("end")]
-    public (int, int) EndPosition { get; set; } = endPosition;
+    public (int, int) EndPosition { get; set; }
+
+    /// <param name="durationMillisecond"></param>
+    /// <param name="endPosition"></param>
+    /// <param name="startPosition"></param>
+    public MoveAnimation(int durationMillisecond, (int, int) endPosition, (int, int)? startPosition)
+    {
+        DurationMillisecond= durationMillisecond;
+        StartPosition= startPosition;
+        EndPosition= endPosition;
+    }
+
+    public MoveAnimation() { }
 
     public void ExecuteAnimation(FrameworkElement parentElement, FrameworkElement sonElement)
     {

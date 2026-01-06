@@ -5,16 +5,26 @@ using AquaAvgFramework.Global;
 
 namespace AquaAvgFramework.Spirits
 {
-    internal class Text(int elementId, EnterContext? enterContext, ExitContext? exitContext, string source, FontSet? fontSet = null)
-        : ISpirit<string>
+    internal class Text : ISpirit<string>
     {
-        public int ElementId { get; set; } = elementId;
-        public EnterContext? EnterContext { get; set; } = enterContext;
-        public ExitContext? ExitContext { get; set; } = exitContext;
-        public FontSet? FontSet { get; set; } = fontSet;
-        public string Source { get; set; } = source;
+        public int ElementId { get; set; }
+        public EnterContext? EnterContext { get; set; }
+        public ExitContext? ExitContext { get; set; }
+        public FontSet? FontSet { get; set; }
+        public string Source { get; set; }
 
         private TextBlock? _instance;
+
+        public Text(int elementId, EnterContext? enterContext, ExitContext? exitContext, string source, FontSet? fontSet = null)
+        {
+            ElementId= elementId;
+            EnterContext= enterContext;
+            ExitContext= exitContext;
+            FontSet= fontSet;
+            Source= source;
+        }
+
+        public Text() { }
 
         public void Enter(GamePanel gamePanel)
         {

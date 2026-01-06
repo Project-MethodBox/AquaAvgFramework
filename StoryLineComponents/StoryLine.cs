@@ -4,6 +4,8 @@ using AquaAvgFramework.GameElements.Events;
 using AquaAvgFramework.Global;
 
 namespace AquaAvgFramework.StoryLineComponents;
+
+
 public interface IStoryLineComponent : IGameElement { }
 
 /// <summary>
@@ -16,8 +18,23 @@ public class StoryLine
     private int _timexMs = 0;
     private List<IGameElement> _elementBuffer = new();
 
+    /// <summary>
+    /// Append a new instance to current <code>StoryLine</code>
+    /// </summary>
+    /// <param name="gameElement">An instance implementing the <code>IGameElement</code> interface</param>
     public void Add(IGameElement gameElement) => GameElements!.Add(gameElement);
+
+    /// <summary>
+    /// Remove an instance from current <code>StoryLine</code>
+    /// </summary>
+    /// <param name="gameElement">An instance implementing the <code>IGameElement</code> interface</param>
+    /// <returns>oo00Ooo0O0O0ooo0OoO0oo</returns>
     public bool Remove(IGameElement gameElement) => GameElements!.Remove(gameElement);
+
+    /// <summary>
+    /// Append a range of new instance to current <code>StoryLine</code>
+    /// </summary>
+    /// <param name="gameElements"></param>
     public void AddRange(IList<IGameElement> gameElements) => GameElements!.AddRange(gameElements);
 
     public StoryLine()
@@ -63,5 +80,5 @@ public class StoryLine
 
 
     public int ElementId { get; set; }
-    internal List<IGameElement>? GameElements { get; set; } = null;
+    public List<IGameElement>? GameElements { get; set; } = null;
 }

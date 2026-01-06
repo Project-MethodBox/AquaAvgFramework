@@ -5,12 +5,19 @@ using AquaAvgFramework.Controls;
 namespace AquaAvgFramework.Spirits
 {
     [Serializable]
-    public class Alert(string source) : ISpirit<string>
+    public class Alert : ISpirit<string>
     {
         public int ElementId { get ; set; }
-        public string Source { get; set; } = source;
-        public EnterContext? EnterContext { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public ExitContext? ExitContext { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Source { get; set; }
+        public EnterContext? EnterContext { get; set; }
+        public ExitContext? ExitContext { get; set; }
+
+        public Alert(string source)
+        {
+            Source= source;
+        }
+
+        public Alert() { }
 
         public void Enter(GamePanel gamePanel)
         {

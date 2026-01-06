@@ -8,6 +8,8 @@ namespace AquaAvgFramework.GameElements.Events
         public int ElementId { get; set; }
         public (string, string) NameCommand { get; set; }
 
+        public ValueEvent() { }
+
         public void Enter(GamePanel _)
         {
             // Unpack params
@@ -17,7 +19,7 @@ namespace AquaAvgFramework.GameElements.Events
             {
                 case "set":
                     {
-                        if (!ValueManager.Shared.ReSetValue(name, Convert.ToInt32(nameCommandArray[1])))
+                        if (!ValueManager.Shared.UpdateValue(name, Convert.ToInt32(nameCommandArray[1])))
                         {
                             ValueManager.Shared.RegisterValue(name, Convert.ToInt32(nameCommandArray[1]));
                         }
@@ -28,7 +30,7 @@ namespace AquaAvgFramework.GameElements.Events
                     {
                         var nameValue = ValueManager.Shared.GetValue(name);
                         nameValue += Convert.ToInt32(nameCommandArray[1]);
-                        ValueManager.Shared.ReSetValue(name, nameValue);
+                        ValueManager.Shared.UpdateValue(name, nameValue);
                         break;
                     }
                 default:

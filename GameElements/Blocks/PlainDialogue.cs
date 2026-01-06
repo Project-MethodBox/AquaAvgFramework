@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using AquaAvgFramework.Animation.Context;
 using AquaAvgFramework.Spirits;
+using System.Text.Json.Serialization;
 
 namespace AquaAvgFramework.GameElements.Blocks
 {
@@ -13,28 +14,43 @@ namespace AquaAvgFramework.GameElements.Blocks
     [Attributes.ApplyAnimation(true)]
     [Attributes.BlockExecution]
     [Serializable]
-    public class PlainDialogue(
-        EnterContext? enterContext,
-        ExitContext? exitContext,
-        string capital,
-        FontFamily? capitalFontFamily,
-        string detail,
-        FontFamily? detailFontFamily,
-        int elementId)
-        : IBlocking
+    public class PlainDialogue : IBlocking
     {
-        public int ElementId { get; set; } = elementId;
+        public int ElementId { get; set; }
 
-        public string Capital { get; set; } = capital;
-        public string Detail { get; set; } = detail;
+        public string Capital { get; set; }
+        public string Detail { get; set; }
 
-        public FontFamily? CapitalFontFamily { get; set; } = capitalFontFamily;
-        public FontFamily? DetailFontFamily { get; set; } = detailFontFamily;
+        [JsonIgnore]
+        public FontFamily? CapitalFontFamily { get; set; } = new FontFamily("SimHei");
 
-        public EnterContext? EnterContext { get; set; } = enterContext;
-        public ExitContext? ExitContext { get; set; } = exitContext;
+        [JsonIgnore]
+        public FontFamily? DetailFontFamily { get; set; } = new FontFamily("SimSun");
+
+        public EnterContext? EnterContext { get; set; }
+        public ExitContext? ExitContext { get; set; }
 
         private CenterBubble? _instance;
+
+        public PlainDialogue(
+            EnterContext? enterContext,
+            ExitContext? exitContext,
+            string capital,
+            FontFamily? capitalFontFamily,
+            string detail,
+            FontFamily? detailFontFamily,
+            int elementId)
+        {
+            ElementId= elementId;
+            Capital= capital;
+            Detail= detail;
+            CapitalFontFamily= capitalFontFamily;
+            DetailFontFamily= detailFontFamily;
+            EnterContext= enterContext;
+            ExitContext= exitContext;
+        }
+
+        public PlainDialogue() { }
 
         public void Enter(GamePanel gamePanel)
         {

@@ -6,6 +6,7 @@ namespace AquaAvgFramework.Pools;
 /// Provide streaming media playback services similar to pooling
 /// </summary>
 /// <typeparam name="TSource">Incoming source type</typeparam>
+
 public interface IPool<TSource> : IGameElement
 {
     /// <summary>

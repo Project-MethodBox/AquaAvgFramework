@@ -3,10 +3,18 @@ using System.Windows;
 
 namespace AquaAvgFramework.StoryLineComponents
 {
-    public class EndStoryLine(int elementId, StoryLine? nextStoryLine) : IStoryLineComponent
+    public class EndStoryLine : IStoryLineComponent
     {
-        public StoryLine? NextStoryLine { get; set; } = nextStoryLine;
-        public int ElementId { get; set; } = elementId;
+        public StoryLine? NextStoryLine { get; set; }
+        public int ElementId { get; set; }
+
+        public EndStoryLine(int elementId, StoryLine? nextStoryLine)
+        {
+            NextStoryLine= nextStoryLine;
+            ElementId= elementId;
+        }
+
+        public EndStoryLine() { }
 
         public void Enter(GamePanel gamePanel)
         {

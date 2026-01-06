@@ -1,5 +1,6 @@
 ﻿using AquaAvgFramework.Animation.Context;
 using AquaAvgFramework.Controls;
+using System.Text.Json.Serialization;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -7,23 +8,35 @@ namespace AquaAvgFramework.GameElements.Blocks;
 
 [Attributes.ApplyAnimation(true)]
 [Attributes.BlockExecution]
-public class ChoiceDialogue(
-    EnterContext? enterContext, ExitContext? exitContext, string capital,
-    FontFamily? capitalFontFamily,
-    int elementId, List<ChoiceDialogue.ChoiceResult> choiceResults)
-    : IGameElement, IBlocking
+public class ChoiceDialogue : IGameElement, IBlocking
 {
-    public int ElementId { get; set; } = elementId;
+    public int ElementId { get; set; }
 
-    public List<ChoiceResult> ChoiceResults { get; set; } = choiceResults;
-    public string Capital { get; set; } = capital;
+    public List<ChoiceResult> ChoiceResults { get; set; }
+    public string Capital { get; set; }
 
-    public FontFamily? CapitalFontFamily { get; set; } = capitalFontFamily;
+    [JsonIgnore]
+    public FontFamily? CapitalFontFamily { get; set; } = new FontFamily("SimHei");
 
-    public EnterContext? EnterContext { get; set; } = enterContext;
-    public ExitContext? ExitContext { get; set; } = exitContext;
+    public EnterContext? EnterContext { get; set; }
+    public ExitContext? ExitContext { get; set; }
 
     private ChoiceBubble? _instance;
+
+    public ChoiceDialogue(
+        EnterContext? enterContext, ExitContext? exitContext, string capital,
+        FontFamily? capitalFontFamily,
+        int elementId, List<ChoiceResult> choiceResults)
+    {
+        ElementId= elementId;
+        ChoiceResults= choiceResults;
+        Capital= capital;
+        CapitalFontFamily= capitalFontFamily;
+        EnterContext= enterContext;
+        ExitContext= exitContext;
+    }
+
+    public ChoiceDialogue() { }
 
     public void Enter(GamePanel gamePanel)
     {
@@ -51,10 +64,18 @@ public class ChoiceDialogue(
         }
     }
 
-    public class ChoiceResult(IGameElement? nextElement, string? text)
+    public class ChoiceResult
     {
-        public string? Text { get; set; } = text;
-        public IGameElement? NextElement { get; set; } = nextElement;
+        public string? Text { get; set; }
+        public IGameElement? NextElement { get; set; }
+
+        public ChoiceResult(IGameElement? nextElement, string? text)
+        {
+            Text= text;
+            NextElement= nextElement;
+        }
+
+        public ChoiceResult() { }
     }
 
     public void Exit(GamePanel gamePanel)

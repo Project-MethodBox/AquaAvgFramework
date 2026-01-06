@@ -6,13 +6,21 @@ namespace AquaAvgFramework.StoryLineComponents;
 /// Node representing the beginning of a linear StoreLine
 /// </summary>
 [Serializable]
-public class BeginStoryLine(int elementId, int storyLineId) : IStoryLineComponent
+public class BeginStoryLine : IStoryLineComponent
 {
     /// <summary>
     /// ID of current storyline
     /// </summary>
-    public int StoryLineId { get; set; } = storyLineId;
-    public int ElementId { get; set; } = elementId;
+    public int StoryLineId { get; set; }
+    public int ElementId { get; set; }
+
+    public BeginStoryLine(int elementId, int storyLineId)
+    {
+        StoryLineId= storyLineId;
+        ElementId= elementId;
+    }
+
+    public BeginStoryLine() { }
 
     public void Enter(GamePanel gamePanel)
     {

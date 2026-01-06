@@ -8,17 +8,27 @@ namespace AquaAvgFramework.Spirits
 {
     [Attributes.ApplyAnimation(false)]
     [Attributes.LimitExecution]
-    public class BitImage(
-        int elementId,
-        Uri source,
-        EnterContext? enterContext,
-        ExitContext? exitContext) : ISpirit<Uri>
+    public class BitImage : ISpirit<Uri>
     {
-        public int ElementId { get; set; } = elementId;
-        public Uri Source { get; set; } = source;
-        public EnterContext? EnterContext { get; set; } = enterContext;
-        public ExitContext? ExitContext { get; set; } = exitContext;
+        public int ElementId { get; set; }
+        public Uri Source { get; set; }
+        public EnterContext? EnterContext { get; set; }
+        public ExitContext? ExitContext { get; set; }
         public Grid? _instance;
+
+        public BitImage(
+            int elementId,
+            Uri source,
+            EnterContext? enterContext,
+            ExitContext? exitContext)
+        {
+            ElementId= elementId;
+            Source= source;
+            EnterContext= enterContext;
+            ExitContext= exitContext;
+        }
+
+        public BitImage() { }
 
         public void Enter(GamePanel gamePanel)
         {

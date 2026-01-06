@@ -7,29 +7,38 @@ namespace AquaAvgFramework.Animation.Common;
 /// <summary>
 /// Animation that enables element rotation
 /// </summary>
-/// <param name="center">Coordinate of anchor points for rotating animation elements</param>
-/// <param name="durationMillisecond">Animation execution time</param>
-/// <param name="endAngle">Rotation angle at termination</param>
-/// <param name="startAngle">The angle of rotation at the beginning</param>
-public class RotateAnimation((int, int)? center, int durationMillisecond, int endAngle, int startAngle)
-    : IAnimation
+public class RotateAnimation : IAnimation
 {
-    public int DurationMillisecond { get; set; } = durationMillisecond;
+    public int DurationMillisecond { get; set; }
 
     /// <summary>
     /// The angle of rotation at the beginning
     /// </summary>
-    public int? StartAngle { get; set; } = startAngle;
+    public int? StartAngle { get; set; }
 
     /// <summary>
     /// Rotation angle at termination
     /// </summary>
-    public int EndAngle { get; set; } = endAngle;
+    public int EndAngle { get; set; }
 
     /// <summary>
     /// Coordinate of anchor points for rotating animation elements
     /// </summary>
-    public (int, int)? Center { get; set; } = center;
+    public (int, int)? Center { get; set; }
+
+    /// <param name="center">Coordinate of anchor points for rotating animation elements</param>
+    /// <param name="durationMillisecond">Animation execution time</param>
+    /// <param name="endAngle">Rotation angle at termination</param>
+    /// <param name="startAngle">The angle of rotation at the beginning</param>
+    public RotateAnimation((int, int)? center, int durationMillisecond, int endAngle, int startAngle)
+    {
+        DurationMillisecond= durationMillisecond;
+        StartAngle= startAngle;
+        EndAngle= endAngle;
+        Center= center;
+    }
+
+    public RotateAnimation() { }
 
     public void ExecuteAnimation(FrameworkElement parentElement, FrameworkElement sonElement)
     {

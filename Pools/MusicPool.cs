@@ -3,24 +3,32 @@ using System.Windows.Media;
 
 namespace AquaAvgFramework.Pools;
 
-public class MusicPool(int elementId, string source) : IPool<string>
+public class MusicPool : IPool<string>
 {
     private MediaPlayer _musicPlayer;
 
-    public int ElementId { get; set; } = elementId;
+    public MusicPool(int elementId, string source)
+    {
+        ElementId= elementId;
+        Source= source;
+    }
+
+    public MusicPool() { }
+
+    public int ElementId { get; set; }
     
     public void Enter(GamePanel gamePanel)
     {
-        if (source == string.Empty)
+        if (Source == string.Empty)
         {
             gamePanel.MediaPlayer.Stop();
             return;
         }
         
-        gamePanel.MediaPlayer.Open(new Uri(source));
+        gamePanel.MediaPlayer.Open(new Uri(Source));
         gamePanel.MediaPlayer.Play();
     }
 
-    public string Source { get; set; } = source;
+    public string Source { get; set; }
     public int Duration { get; set; }
 }

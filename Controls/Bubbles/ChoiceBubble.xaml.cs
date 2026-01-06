@@ -58,9 +58,9 @@ namespace AquaAvgFramework.Controls
         private void Selected(object sender, MouseButtonEventArgs e)
         {
             if (ChoiceBox.SelectedIndex == -1) return;
-            if (!ValueManager.Shared.ReSetValue("%Selected%",ChoiceBox.SelectedIndex))
+            if (!ValueManager.Shared.UpdateValue("%Selected%", ChoiceBox.SelectedIndex))
             {
-                ValueManager.Shared.RegisterValue("%Selected%", ChoiceBox.SelectedIndex);
+                ValueManager.Shared.RegisterValue("%Selected%", ChoiceBox.SelectedIndex, true);
             }
             RaiseEvent(e);
         }

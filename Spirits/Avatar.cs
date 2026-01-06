@@ -10,21 +10,31 @@ namespace AquaAvgFramework.Spirits
 {
     [Attributes.ApplyAnimation(false)]
     [Attributes.LimitExecution]
-    public sealed class Avatar(
-        Avatar.AvatarType avatarTypeInstance,
-        int elementId,
-        EnterContext? enterContext,
-        ExitContext? exitContent,
-        Uri source)
-        : ISpirit<Uri>
+    public sealed class Avatar : ISpirit<Uri>
     {
-        public int ElementId { get; set; } = elementId;
-        public AvatarType AvatarTypeInstance { get; set; } = avatarTypeInstance;
-        public Uri Source { get; set; } = source;
-        public EnterContext? EnterContext { get; set; } = enterContext;
-        public ExitContext? ExitContext { get; set; } = exitContent;
+        public int ElementId { get; set; }
+        public AvatarType AvatarTypeInstance { get; set; }
+        public Uri Source { get; set; }
+        public EnterContext? EnterContext { get; set; }
+        public ExitContext? ExitContext { get; set; }
         private Grid? _instance;
-        private Panel? _avatarContainer; 
+        private Panel? _avatarContainer;
+
+        public Avatar(
+            AvatarType avatarTypeInstance,
+            int elementId,
+            EnterContext? enterContext,
+            ExitContext? exitContent,
+            Uri source)
+        {
+            ElementId= elementId;
+            AvatarTypeInstance= avatarTypeInstance;
+            Source= source;
+            EnterContext= enterContext;
+            ExitContext= exitContent;
+        }
+
+        public Avatar() { }
 
         public void Enter(GamePanel gamePanel)
         {

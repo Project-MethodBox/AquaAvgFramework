@@ -8,12 +8,22 @@ namespace AquaAvgFramework.Animation.Switch;
 /// <summary>
 /// Provide content for switching background images using sliding motion effects
 /// </summary>
-public class SlideSwitch(int durationMillisecond, bool linkage = false) : IAnimation
+public class SlideSwitch : IAnimation
 {
+    private readonly bool linkage;
+
+    public SlideSwitch(int durationMillisecond, bool linkage = false)
+    {
+        this.linkage=linkage;
+        DurationMillisecond= durationMillisecond;
+    }
+
+    public SlideSwitch() { }
+
     /// <summary>
     /// Time elapsed for switching between two images
     /// </summary>
-    public int DurationMillisecond { get; set; } = durationMillisecond;
+    public int DurationMillisecond { get; set; }
 
     /// <summary>
     /// Perform image switching action

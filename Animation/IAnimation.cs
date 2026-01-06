@@ -1,6 +1,10 @@
-﻿using AquaAvgFramework.Animation.Context;
+﻿using AquaAvgFramework.Animation.Common;
+using AquaAvgFramework.Animation.Context;
+using AquaAvgFramework.Animation.Switch;
 using AquaAvgFramework.Controls;
+using AquaAvgFramework.Customize;
 using AquaAvgFramework.GameElements;
+using System.Text.Json.Serialization;
 using System.Windows;
 
 namespace AquaAvgFramework.Animation;
@@ -8,6 +12,12 @@ namespace AquaAvgFramework.Animation;
 /// <summary>
 /// Provide a universal solution for parent-child animations
 /// </summary>
+
+[JsonDerivedType(typeof(MoveAnimation), "Move")]
+[JsonDerivedType(typeof(RotateAnimation), "Rotate")]
+[JsonDerivedType(typeof(SlideSwitch), "Slide")]
+[JsonDerivedType(typeof(SwitchBase), "SwitchBase")]
+[JsonDerivedType(typeof(TransparencySwitch), "Transparency")]
 public interface IAnimation
 {
     /// <summary>

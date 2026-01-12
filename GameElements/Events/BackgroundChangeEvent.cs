@@ -2,16 +2,18 @@
 using AquaAvgFramework.Animation;
 using AquaAvgFramework.Controls;
 using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace AquaAvgFramework.GameElements.Events;
+
 public class BackgroundChangeEvent : IGameElement
 {
     public int ElementId { get; set; }
-    public Uri ImagePath { get; set; }
+    public string ImagePath { get; set; }
 
     public IAnimation? SwitchAnimation { get; set; }
 
-    public BackgroundChangeEvent(int elementId, Uri imagePath, IAnimation? switchAnimation = null)
+    public BackgroundChangeEvent(int elementId, string imagePath, IAnimation? switchAnimation = null)
     {
         ElementId= elementId;
         ImagePath= imagePath;
@@ -24,13 +26,23 @@ public class BackgroundChangeEvent : IGameElement
     {
         if (SwitchAnimation is not null)
         {
-            var image = new Image();
-            image.Source = new BitmapImage(ImagePath);
-            SwitchAnimation?.ExecuteAnimation(gamePanel, image);
+            var baseDicrectory = System.AppDomain.CurrentDomain.BaseDirectory;
+
+            try
+            {
+                var image = new Image();
+                image.Source = new BitmapImage(new(Path.Combine(baseDicrectory, ImagePath)));
+                SwitchAnimation?.ExecuteAnimation(gamePanel, image);
+            }
+
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("文件不存在");
+            }
         }
         else
         {
-            gamePanel.BackImage.Source = new BitmapImage(ImagePath);
+            gamePanel.BackImage.Source = new BitmapImage(new(ImagePath));
         }
     }
 }

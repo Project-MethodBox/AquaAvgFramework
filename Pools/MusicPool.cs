@@ -1,4 +1,5 @@
 ﻿using AquaAvgFramework.Controls;
+using System.IO;
 using System.Windows.Media;
 
 namespace AquaAvgFramework.Pools;
@@ -19,14 +20,21 @@ public class MusicPool : IPool<string>
     
     public void Enter(GamePanel gamePanel)
     {
-        if (Source == string.Empty)
+        try
         {
-            gamePanel.MediaPlayer.Stop();
-            return;
+            if (Source == string.Empty)
+            {
+                gamePanel.MediaPlayer.Stop();
+                return;
+            }
+
+            gamePanel.MediaPlayer.Open(new Uri(Source));
+            gamePanel.MediaPlayer.Play();
         }
-        
-        gamePanel.MediaPlayer.Open(new Uri(Source));
-        gamePanel.MediaPlayer.Play();
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine("Cannot find music file");
+        }
     }
 
     public string Source { get; set; }

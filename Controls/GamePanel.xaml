@@ -28,10 +28,24 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!-- Background image-->
+        <!--  Background image  -->
         <Image
-            Grid.RowSpan="4"
             Name="BackImage"
+            Grid.RowSpan="4"
+            Grid.ColumnSpan="3"
+            Width="1200"
+            Height="800"
+            Source="C:\Users\刘\source\repos\AquaAvgFramework\BgTest.png"
+            Stretch="Fill">
+            <Image.Effect>
+                <BlurEffect Radius="5" />
+            </Image.Effect>
+        </Image>
+
+        <!--  Background image for animation display  -->
+        <Image
+            Name="AnimationImage"
+            Grid.RowSpan="4"
             Grid.ColumnSpan="3"
             Width="1200"
             Height="800"
@@ -42,21 +56,7 @@
             </Image.Effect>
         </Image>
 
-        <!-- Background image for animation display-->
-		<Image
-	        Grid.RowSpan="4"
-	        Name="AnimationImage"
-	        Grid.ColumnSpan="3"
-	        Width="1200"
-	        Height="800"
-	        Source="C:\Users\刘\source\repos\AquaAvgFramework\BgTest.jpg"
-	        Stretch="Fill">
-	        <Image.Effect>
-		        <BlurEffect Radius="5" />
-	        </Image.Effect>
-        </Image>
-
-		<!--  Top bar  -->
+        <!--  Top bar  -->
         <StackPanel
             Grid.Row="0"
             Grid.Column="0"

@@ -39,7 +39,7 @@ public class SlideSwitch : IAnimation
         // the interface is indeed abstracted in this way
         var newImageSource = ((Image)sonElement).Source;
         gamePanel.AnimationImage.Source = newImageSource;
-        gamePanel.AnimationImage.Margin = new Thickness(1200, 0, 0, 0);
+        gamePanel.AnimationImage.Margin = new Thickness(parentElement.ActualWidth, 0, 0, 0);
 
         // Apply animation
         var tempName = $"ta{Random.Shared.Next(10000000, 99999999)}";

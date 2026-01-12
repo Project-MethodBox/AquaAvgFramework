@@ -18,6 +18,13 @@ namespace AquaAvgFramework.Animation;
 [JsonDerivedType(typeof(SlideSwitch), "Slide")]
 [JsonDerivedType(typeof(SwitchBase), "SwitchBase")]
 [JsonDerivedType(typeof(TransparencySwitch), "Transparency")]
+[JsonDerivedType(typeof(BlurSwitch), "Blur")]
+[JsonDerivedType(typeof(ZoomFadeSwitch), "Zoom")]
+[JsonDerivedType(typeof(MaskWipeSwitch), "Wipe")]
+[JsonDerivedType(typeof(FloatAnimation), "Float")]
+[JsonDerivedType(typeof(ShakeAnimation), "Shake")]
+[JsonDerivedType(typeof(JumpInAnimation), "JumpIn")]
+[JsonDerivedType(typeof(PunchAnimation), "Punch")]
 public interface IAnimation
 {
     /// <summary>
